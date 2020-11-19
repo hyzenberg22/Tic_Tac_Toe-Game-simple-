@@ -4,13 +4,21 @@
 (1, 1) (2, 1) (3, 1)
 """
 def grid():
-    print(f'''
+    var1 = (f'''
     ---------
     | {matrix[0][0]} {matrix[0][1]} {matrix[0][2]} |
     | {matrix[1][0]} {matrix[1][1]} {matrix[1][2]} |
     | {matrix[2][0]} {matrix[2][1]} {matrix[2][2]} |
     ---------
     ''')
+    return var1
+def coordinate_instructions():
+    var = '''
+    (1, 3) (2, 3) (3, 3)
+    (1, 2) (2, 2) (3, 2)
+    (1, 1) (2, 1) (3, 1)
+    '''
+    return var
 def check(i, grid):
     for y in range(0, 3):
         if grid[y][0] == grid[y][1] == grid[y][2] == i:
@@ -21,12 +29,10 @@ def check(i, grid):
             return True
         elif grid[0][2] == grid[1][1] == grid[2][0] == i:
             return True
-matrix = []
-for i in range (0,8,3):
-    matrix.append([' ', ' ', ' '])
-grid()
-print(matrix)
-
+matrix = [[' ', ' ', ' '] for _ in range(3)]
+# grid()
+# coordinate_instructions()
+print(f'{grid()} {coordinate_instructions()}')
 counter = 1
 mark = 'X'
 while True:
@@ -47,7 +53,7 @@ while True:
             continue
         if matrix[3 - y][x - 1] == ' ':
             matrix[3 - y][x - 1] = mark
-            grid()
+            print(grid())
             counter += 1
             continue
         else:
