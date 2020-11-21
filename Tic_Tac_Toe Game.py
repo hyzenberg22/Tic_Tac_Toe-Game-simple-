@@ -5,20 +5,14 @@
 """
 def grid():
     var1 = (f'''
-    ---------
-    | {matrix[0][0]} {matrix[0][1]} {matrix[0][2]} |
-    | {matrix[1][0]} {matrix[1][1]} {matrix[1][2]} |
-    | {matrix[2][0]} {matrix[2][1]} {matrix[2][2]} |
+    ---------     ( User Cordinate Manual )
+    | {matrix[0][0]} {matrix[0][1]} {matrix[0][2]} |     |  (1, 3) (2, 3) (3, 3)  | 
+    | {matrix[1][0]} {matrix[1][1]} {matrix[1][2]} |     |  (1, 2) (2, 2) (3, 2)  |
+    | {matrix[2][0]} {matrix[2][1]} {matrix[2][2]} |     |  (1, 1) (2, 1) (3, 1)  |
     ---------
     ''')
     return var1
-def coordinate_instructions():
-    var = '''
-    (1, 3) (2, 3) (3, 3)
-    (1, 2) (2, 2) (3, 2)
-    (1, 1) (2, 1) (3, 1)
-    '''
-    return var
+#Functions Used in the Progamme
 def check(i, grid):
     for y in range(0, 3):
         if grid[y][0] == grid[y][1] == grid[y][2] == i:
@@ -29,23 +23,37 @@ def check(i, grid):
             return True
         elif grid[0][2] == grid[1][1] == grid[2][0] == i:
             return True
+def which_player_wins(argument, player1, player2):
+    if argument == 'X':
+        print(f'Congratulations "{player1}"  X Wins')
+    elif argument == 'O':
+        print(f'Congratulations "{player2}"  O Wins')
+
+
 matrix = [[' ', ' ', ' '] for _ in range(3)]
-# grid()
-# coordinate_instructions()
-print(f'{grid()} {coordinate_instructions()}')
+print(f'"X" is for Player-1 "O" is for Player-2')
+print()
+player_1= input('Enter Player-1 Name:- ').upper()
+player_2= input('Enter Player-2 Name:- ').upper()
+print()
+print(f'Setting X is for "{player_1}", O is for "{player_2}"')
+print(grid())
+
 counter = 1
 mark = 'X'
 while True:
     if counter % 2 != 0:
         mark = 'X'
+        print(f'{player_1}')
     else:
         mark = 'O'
+        print(f'{player_2}')
     try:
         draw_check = [i for z in matrix for i in z if i == ' ']
         if not draw_check:
             print('Draw')
             break
-        x, y = input('Enter the coordinates: ').split()
+        x, y = input('Please Enter the coordinates: ').split()
         x = int(x)
         y = int(y)
         if y >= 4 or y<= 0:
@@ -68,6 +76,6 @@ while True:
     finally:
         if check(mark, matrix):
             grid()
-            print(f'{mark} wins')
+            which_player_wins(mark, player_1, player_2)
             break
 
