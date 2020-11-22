@@ -33,8 +33,8 @@ def which_player_wins(argument, player1, player2):
 matrix = [[' ', ' ', ' '] for _ in range(3)]
 print(f'"X" is for Player-1 "O" is for Player-2')
 print()
-player_1= input('Enter Player-1 Name:- ').upper()
-player_2= input('Enter Player-2 Name:- ').upper()
+player_1= input('Enter Player-1 Name:- ').upper().replace(' ', '')
+player_2= input('Enter Player-2 Name:- ').upper().replace(' ', '')
 print()
 print(f'Setting X is for "{player_1}", O is for "{player_2}"')
 print(grid())
